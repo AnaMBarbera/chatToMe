@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseAuth
 
 struct ConversacionView: View {
     
@@ -21,22 +24,29 @@ struct ConversacionView: View {
                 ScrollView{
                     ForEach(msgViewModel.mensajesDB){  item in
                         //Imprimo el usuario que ha subido el msg, no el que está loggeado!!
-                        Text("\(item.usuarioE) :")
-                        .bold()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading,5)
-                        Text(item.texto)
+                        HStack{
+                            Text("\(item.usuarioE) :")
+                                .bold()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading,5)
+                            Text(item.texto)
+                        }
                     }.border(Color.black)
                 }.padding(5)
                 
                 TextField("Mensaje:", text: $mensaje)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .border(Color.black)
+                    .padding(5)
                 Button("Envía Mensaje"){
-                    let msg = Mensaje(texto: mensaje,usuarioE: authModel.user?.email ?? "Vacío")
+                    let tiempo = Timestamp(date: Date())
+                    let msg = Mensaje(texto: mensaje,usuarioE: authModel.user?.email ?? "Vacío",timestamp: tiempo)
                     //msg.texto = mensaje
                     //msg.usuario = authModel.user
                     //print("EMAIL: \(authModel.user?.email)")
                     msgViewModel.addMensaje(mensaje: msg)
                     msgViewModel.fetchMensajes()
+                    mensaje = ""
                 }
                 .navigationTitle("CONVERSACIONES")
                 Spacer()

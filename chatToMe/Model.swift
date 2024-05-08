@@ -9,9 +9,11 @@ import Foundation
 import SwiftUI
 import FirebaseFirestoreSwift
 import FirebaseAuth
+import FirebaseFirestore
 
 struct Mensaje: Codable, Identifiable {
     @DocumentID var id: String?// Identificador único de FireStore
     var texto: String
     var usuarioE: String
+    @ServerTimestamp var timestamp: Timestamp?
 }
