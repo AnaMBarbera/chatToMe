@@ -29,6 +29,8 @@
 		82A7CE932BEA97AC00AEC265 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 82A7CE922BEA97AC00AEC265 /* GoogleSignInSwift */; };
 		82A7CE952BEAB24100AEC265 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE942BEAB24100AEC265 /* ForgotPasswordView.swift */; };
 		82A7CE972BEAB2DA00AEC265 /* Aplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE962BEAB2DA00AEC265 /* Aplication.swift */; };
+		82A7CE992BEAB42500AEC265 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE982BEAB42500AEC265 /* Model.swift */; };
+		82A7CE9B2BEAB4F900AEC265 /* MensajesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE9A2BEAB4F900AEC265 /* MensajesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		82A7CE8D2BEA8F7B00AEC265 /* ConversacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversacionView.swift; sourceTree = "<group>"; };
 		82A7CE942BEAB24100AEC265 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		82A7CE962BEAB2DA00AEC265 /* Aplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aplication.swift; sourceTree = "<group>"; };
+		82A7CE982BEAB42500AEC265 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		82A7CE9A2BEAB4F900AEC265 /* MensajesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensajesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +137,10 @@
 				82A7CE522BEA740100AEC265 /* Assets.xcassets */,
 				82A7CE542BEA740100AEC265 /* Preview Content */,
 				82A7CE8D2BEA8F7B00AEC265 /* ConversacionView.swift */,
+				82A7CE982BEAB42500AEC265 /* Model.swift */,
 				82A7CE942BEAB24100AEC265 /* ForgotPasswordView.swift */,
 				82A7CE962BEAB2DA00AEC265 /* Aplication.swift */,
+				82A7CE9A2BEAB4F900AEC265 /* MensajesViewModel.swift */,
 			);
 			path = chatToMe;
 			sourceTree = "<group>";
@@ -309,7 +315,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A7CE992BEAB42500AEC265 /* Model.swift in Sources */,
 				82A7CE8E2BEA8F7B00AEC265 /* ConversacionView.swift in Sources */,
+				82A7CE9B2BEAB4F900AEC265 /* MensajesViewModel.swift in Sources */,
 				82A7CE952BEAB24100AEC265 /* ForgotPasswordView.swift in Sources */,
 				82A7CE7B2BEA74C900AEC265 /* HolderView.swift in Sources */,
 				82A7CE7D2BEA75B900AEC265 /* SignUpView.swift in Sources */,

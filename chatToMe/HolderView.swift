@@ -16,8 +16,8 @@ struct HolderView: View {
                 SignUpView()
             } else {
                // let almacenInicial = SettingStore()
-               // let viewModel = RestaurantViewModel(almacen: SettingStore())
-                ContentView()
+                let viewModel = MensajesViewModel()
+                ConversacionView(msgViewModel: viewModel).environmentObject(authModel)
             }
         }
         .onAppear {
