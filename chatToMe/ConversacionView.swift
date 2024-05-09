@@ -22,7 +22,7 @@ struct ConversacionView: View {
         NavigationView{
             VStack{
                 ScrollView{
-                    ForEach(msgViewModel.mensajesDB){  item in
+                    ForEach(msgViewModel.mensajesDB.sorted(by: { $0.timestamp?.seconds ?? 0 < $1.timestamp?.seconds ?? 0 })){  item in
                         //Imprimo el usuario que ha subido el msg, no el que está loggeado!!
                         HStack{
                             Text("\(item.usuarioE) :")
@@ -40,6 +40,7 @@ struct ConversacionView: View {
                     .padding(5)
                 Button("Envía Mensaje"){
                     let tiempo = Timestamp(date: Date())
+                    
                     let msg = Mensaje(texto: mensaje,usuarioE: authModel.user?.email ?? "Vacío",timestamp: tiempo)
                     //msg.texto = mensaje
                     //msg.usuario = authModel.user
