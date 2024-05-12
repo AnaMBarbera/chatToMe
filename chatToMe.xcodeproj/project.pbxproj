@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8203F5F42BF159F500D219BF /* CabeceraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203F5F32BF159F500D219BF /* CabeceraView.swift */; };
 		82A7CE4F2BEA73FC00AEC265 /* chatToMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE4E2BEA73FC00AEC265 /* chatToMeApp.swift */; };
 		82A7CE512BEA73FC00AEC265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE502BEA73FC00AEC265 /* ContentView.swift */; };
 		82A7CE532BEA740100AEC265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82A7CE522BEA740100AEC265 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8203F5F32BF159F500D219BF /* CabeceraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabeceraView.swift; sourceTree = "<group>"; };
 		82A7CE4B2BEA73FC00AEC265 /* chatToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A7CE4E2BEA73FC00AEC265 /* chatToMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatToMeApp.swift; sourceTree = "<group>"; };
 		82A7CE502BEA73FC00AEC265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		82A7CE4D2BEA73FC00AEC265 /* chatToMe */ = {
 			isa = PBXGroup;
 			children = (
+				8203F5F32BF159F500D219BF /* CabeceraView.swift */,
 				82A7CE4E2BEA73FC00AEC265 /* chatToMeApp.swift */,
 				82A7CE502BEA73FC00AEC265 /* ContentView.swift */,
 				82A7CE782BEA747800AEC265 /* AuthViewModel.swift */,
@@ -321,6 +324,7 @@
 				82A7CE952BEAB24100AEC265 /* ForgotPasswordView.swift in Sources */,
 				82A7CE7B2BEA74C900AEC265 /* HolderView.swift in Sources */,
 				82A7CE7D2BEA75B900AEC265 /* SignUpView.swift in Sources */,
+				8203F5F42BF159F500D219BF /* CabeceraView.swift in Sources */,
 				82A7CE512BEA73FC00AEC265 /* ContentView.swift in Sources */,
 				82A7CE4F2BEA73FC00AEC265 /* chatToMeApp.swift in Sources */,
 				82A7CE792BEA747800AEC265 /* AuthViewModel.swift in Sources */,
