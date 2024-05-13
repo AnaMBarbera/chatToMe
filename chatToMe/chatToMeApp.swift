@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import GoogleSignIn
+//import GoogleMobileAds
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     

@@ -9,6 +9,8 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
+import Firebase
+import FirebaseStorage
 
 struct ConversacionView: View {
     
@@ -17,8 +19,10 @@ struct ConversacionView: View {
     @StateObject var msgViewModel: MensajesViewModel
     @State private var mensaje : String = ""
     @State private var mensajesOrdenados: [Mensaje] = []
+    @State private var pepe: [String] = ["hola","compis"]
     @State private var mostrarImagenInicial = true
     @FocusState private var focusEnMensaje: Bool
+    let storage = Storage.storage()
     
     
     var body: some View {
@@ -38,8 +42,8 @@ struct ConversacionView: View {
                     .onChange(of: msgViewModel.mensajesDB) { nuevosMensajes in
                             mensajesOrdenados = nuevosMensajes.sorted(by: { ($0.timestamp?.dateValue() ?? Date()) < ($1.timestamp?.dateValue() ?? Date()) })
                         }
-                    //Necesitamos mostrar siempre el último elemento del array, por eso usamos crollViewReader dentro del ScrollView
-                    ScrollViewReader { scrollView in
+                    //Necesitamos mostrar siempre el último elemento del array, por eso usamos scrollViewReader dentro del ScrollView
+                    ScrollViewReader { scrollView in //proxy
                         ScrollView {
                                 //Muy importante agregar el id: \.self para que identifique los cambios en el array y se refresque el scroll
                                     ForEach(mensajesOrdenados, id: \.self){  item in
@@ -85,7 +89,7 @@ struct ConversacionView: View {
                         msgViewModel.addMensaje(mensaje: msg)
                         msgViewModel.fetchMensajes()
                         //Actualizamos mensajesOrdenados para que el Scroll baje
-                        //mensajesOrdenados.append(msg)
+                        mensajesOrdenados.append(msg)
                         //No hace falta, porque he agregado un onChange al ppio de la vista
 
                         mensaje = ""
@@ -111,7 +115,7 @@ struct ConversacionView: View {
                 msgViewModel.fetchMensajes()
                 // Utilizamos el método map para obtener un array de String con el campo texto de cada mensaje y ordenados por la marca de tiempo
                 //Cargamos en la variable, los mensajes ordenados
-                //mensajesOrdenados = msgViewModel.mensajesDB.sorted(by: { ($0.timestamp?.dateValue() ?? Date()) < ($1.timestamp?.dateValue() ?? Date()) }).map { $0 }
+                mensajesOrdenados = msgViewModel.mensajesDB.sorted(by: { ($0.timestamp?.dateValue() ?? Date()) < ($1.timestamp?.dateValue() ?? Date()) }).map { $0 }
                 //Tampoco hace falta, al agregar el onChange al ppio de la vista
                 
                 // Iniciar temporizador para ocultar la imagen después de 3 segundos

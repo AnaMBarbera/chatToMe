@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8203F5F42BF159F500D219BF /* CabeceraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203F5F32BF159F500D219BF /* CabeceraView.swift */; };
+		8203F5F92BF2272300D219BF /* SubirArchivoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8203F5F82BF2272300D219BF /* SubirArchivoView.swift */; };
+		8203F5FC2BF2295F00D219BF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8203F5FB2BF2295F00D219BF /* FirebaseStorage */; };
+		8203F5FE2BF2295F00D219BF /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 8203F5FD2BF2295F00D219BF /* FirebaseStorageCombine-Community */; };
 		82A7CE4F2BEA73FC00AEC265 /* chatToMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE4E2BEA73FC00AEC265 /* chatToMeApp.swift */; };
 		82A7CE512BEA73FC00AEC265 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7CE502BEA73FC00AEC265 /* ContentView.swift */; };
 		82A7CE532BEA740100AEC265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82A7CE522BEA740100AEC265 /* Assets.xcassets */; };
@@ -53,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		8203F5F32BF159F500D219BF /* CabeceraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabeceraView.swift; sourceTree = "<group>"; };
+		8203F5F82BF2272300D219BF /* SubirArchivoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubirArchivoView.swift; sourceTree = "<group>"; };
 		82A7CE4B2BEA73FC00AEC265 /* chatToMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatToMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A7CE4E2BEA73FC00AEC265 /* chatToMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatToMeApp.swift; sourceTree = "<group>"; };
 		82A7CE502BEA73FC00AEC265 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 			files = (
 				82A7CE862BEA8E0500AEC265 /* FirebaseDatabaseSwift in Frameworks */,
 				82A7CE882BEA8E0500AEC265 /* FirebaseFirestore in Frameworks */,
+				8203F5FE2BF2295F00D219BF /* FirebaseStorageCombine-Community in Frameworks */,
+				8203F5FC2BF2295F00D219BF /* FirebaseStorage in Frameworks */,
 				82A7CE842BEA8E0500AEC265 /* FirebaseDatabase in Frameworks */,
 				82A7CE932BEA97AC00AEC265 /* GoogleSignInSwift in Frameworks */,
 				82A7CE8A2BEA8E0500AEC265 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -144,6 +150,7 @@
 				82A7CE942BEAB24100AEC265 /* ForgotPasswordView.swift */,
 				82A7CE962BEAB2DA00AEC265 /* Aplication.swift */,
 				82A7CE9A2BEAB4F900AEC265 /* MensajesViewModel.swift */,
+				8203F5F82BF2272300D219BF /* SubirArchivoView.swift */,
 			);
 			path = chatToMe;
 			sourceTree = "<group>";
@@ -198,6 +205,8 @@
 				82A7CE8B2BEA8E0500AEC265 /* FirebaseFirestoreSwift */,
 				82A7CE902BEA97AC00AEC265 /* GoogleSignIn */,
 				82A7CE922BEA97AC00AEC265 /* GoogleSignInSwift */,
+				8203F5FB2BF2295F00D219BF /* FirebaseStorage */,
+				8203F5FD2BF2295F00D219BF /* FirebaseStorageCombine-Community */,
 			);
 			productName = chatToMe;
 			productReference = 82A7CE4B2BEA73FC00AEC265 /* chatToMe.app */;
@@ -274,6 +283,7 @@
 			packageReferences = (
 				82A7CE802BEA8E0500AEC265 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				82A7CE8F2BEA97AC00AEC265 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				8203F5FA2BF2295F00D219BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 82A7CE4C2BEA73FC00AEC265 /* Products */;
 			projectDirPath = "";
@@ -319,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A7CE992BEAB42500AEC265 /* Model.swift in Sources */,
+				8203F5F92BF2272300D219BF /* SubirArchivoView.swift in Sources */,
 				82A7CE8E2BEA8F7B00AEC265 /* ConversacionView.swift in Sources */,
 				82A7CE9B2BEAB4F900AEC265 /* MensajesViewModel.swift in Sources */,
 				82A7CE952BEAB24100AEC265 /* ForgotPasswordView.swift in Sources */,
@@ -655,6 +666,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8203F5FA2BF2295F00D219BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		82A7CE802BEA8E0500AEC265 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -674,6 +693,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8203F5FB2BF2295F00D219BF /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82A7CE802BEA8E0500AEC265 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		8203F5FD2BF2295F00D219BF /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82A7CE802BEA8E0500AEC265 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
 		82A7CE812BEA8E0500AEC265 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 82A7CE802BEA8E0500AEC265 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

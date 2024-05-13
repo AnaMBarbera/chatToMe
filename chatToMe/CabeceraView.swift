@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CabeceraView: View {
     var body: some View {
+      //  NavigationView{
         HStack {
             ZStack {
                     Circle()
@@ -21,6 +22,9 @@ struct CabeceraView: View {
                     .frame(width: 90, height: 90)
             }.padding(.leading)
             Spacer()
+         /*   NavigationLink(destination: SubirArchivoView()){
+               Text("SUBIR ARCHIVO")
+            }*/
             ZStack{
                 Rectangle()
                     .stroke(Color.gray, lineWidth: 4)
@@ -30,7 +34,10 @@ struct CabeceraView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 90, height: 90)
             }.padding(.trailing)
+    //    }
+      //  .navigationBarHidden(true)
         }
+        //.edgesIgnoringSafeArea(.all)
     }
 }
 
