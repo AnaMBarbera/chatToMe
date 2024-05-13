@@ -101,18 +101,13 @@ struct ConversacionView: View {
                         
                         .padding(5)
                     Spacer()
-                    
-                   /* if mostrarImagenInicial {
-                        Color.black.edgesIgnoringSafeArea(.all)
-                                Image("chatlogo1")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                        }*/
                 }
                 
             .onAppear {
                 focusEnMensaje = true //Ponemos a true esta variable, para que el user no tenga que pulsar sobre el mensaje para poder escribir
-                msgViewModel.fetchMensajes()
+                //msgViewModel.fetchMensajes()
+                msgViewModel.startListening()
+                
                 // Utilizamos el método map para obtener un array de String con el campo texto de cada mensaje y ordenados por la marca de tiempo
                 //Cargamos en la variable, los mensajes ordenados
                 mensajesOrdenados = msgViewModel.mensajesDB.sorted(by: { ($0.timestamp?.dateValue() ?? Date()) < ($1.timestamp?.dateValue() ?? Date()) }).map { $0 }
@@ -126,15 +121,10 @@ struct ConversacionView: View {
                     }
                     
                 }
-        }
-        
-      /*  Color.black.edgesIgnoringSafeArea(.all) // Fondo negro
-            if mostrarImagenInicial {
-                Image("chatlogo1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }*/
-            
+            }
+            .onDisappear {
+                       msgViewModel.stopListening()
+                   }
         }//Fin ZStack
 }
 

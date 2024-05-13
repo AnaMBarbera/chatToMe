@@ -16,6 +16,28 @@ class MensajesViewModel: ObservableObject {
 
     var databaseReference = Firestore.firestore().collection("mensajes")
     @Published var mensajesDB: [Mensaje] = []
+    private var listener: ListenerRegistration?
+
+    func startListening() {
+            listener = databaseReference.addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(error!)")
+                    return
+                }
+                self.mensajesDB = documents.compactMap { document in
+                    do {
+                        let mensaje = try document.data(as: Mensaje.self)
+                        return mensaje
+                    }catch {
+                        return nil
+                    }
+            }
+        }
+    }
+    
+    func stopListening() {
+           listener?.remove()
+       }
     
 func fetchMensajes() {
     databaseReference.getDocuments { querySnapshot, error in
