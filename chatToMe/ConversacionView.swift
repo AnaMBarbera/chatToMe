@@ -85,6 +85,7 @@ struct ConversacionView: View {
                     //Le insertamos un onCommit, para eliminar botón de enviar mensaje; bastará con pulsar enter
                     TextField("Escribe tu mensaje:", text: $mensaje, onCommit: {
                         let tiempo = Timestamp(date: Date())
+                        
                         let msg = Mensaje(texto: mensaje,usuarioE: authModel.user?.email ?? "Vacío",timestamp: tiempo)
                         msgViewModel.addMensaje(mensaje: msg)
                         msgViewModel.fetchMensajes()

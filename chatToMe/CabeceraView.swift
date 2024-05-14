@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct CabeceraView: View {
+    
+    @State var mostrarModal : Bool = false
+    
     var body: some View {
-      //  NavigationView{
+     
         HStack {
             ZStack {
                     Circle()
@@ -21,10 +24,13 @@ struct CabeceraView: View {
                     .clipShape(Circle()) // Forma circular
                     .frame(width: 90, height: 90)
             }.padding(.leading)
-            Spacer()
-         /*   NavigationLink(destination: SubirArchivoView()){
+            //Spacer()
+            Button(action: {
+                mostrarModal = true
+            }){
                Text("SUBIR ARCHIVO")
-            }*/
+            }
+
             ZStack{
                 Rectangle()
                     .stroke(Color.gray, lineWidth: 4)
@@ -34,7 +40,9 @@ struct CabeceraView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 90, height: 90)
             }.padding(.trailing)
-    //    }
+                .sheet(isPresented: $mostrarModal){
+                    SubirArchivoView()
+                }
       //  .navigationBarHidden(true)
         }
         //.edgesIgnoringSafeArea(.all)
