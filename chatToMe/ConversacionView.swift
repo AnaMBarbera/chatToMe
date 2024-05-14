@@ -48,31 +48,10 @@ struct ConversacionView: View {
                                 //Muy importante agregar el id: \.self para que identifique los cambios en el array y se refresque el scroll
                                     ForEach(mensajesOrdenados, id: \.self){  item in
                                         //Imprimo el usuario que ha subido el msg, no el que está loggeado!!
-                                        
-                                        VStack(alignment: .leading) {
-                                            Text(" > \(item.usuarioE)")
-                                                .font(.footnote)
-                                            ZStack(alignment: .bottomTrailing) {
-                                                // Fondo azul con el texto del timestamp
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.blue)
-                                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                                    
-                                                // Contenido del mensaje
-                                                VStack(alignment: .trailing) {
-                                                    Text(item.texto)
-                                                        .padding(.trailing,5)
-                                                        .foregroundColor(.white)
-                                                    Text(item.timestamp?.dateValue().formatted() ?? Date().formatted())
-                                                        //.font(.footnote)
-                                                        .font(.caption)
-                                                        .foregroundColor(.white)
-                                                        .padding(.trailing, 5)
-                                                        .padding(.bottom,5)
-                                                }
-                                            }
-                                            .padding(.horizontal, 5)
-                                            
+                                        if(item.usuarioE == authModel.user?.email) {
+                                            MostrarMensajes(item: item, color: Color.green, al1: .bottomLeading, al2: .leading,txtColor: Color.black)
+                                        }else{
+                                            MostrarMensajes(item: item, color: Color.blue, al1: .bottomTrailing, al2: .trailing,txtColor: Color.white)
                                         }
                                     }
                                     .onChange(of: mensajesOrdenados) { _ in
@@ -143,5 +122,46 @@ func scrollToBottom(scrollView: ScrollViewProxy) {
 struct ConversacionView_Previews: PreviewProvider {
     static var previews: some View {
         ConversacionView(msgViewModel: MensajesViewModel())
+    }
+}
+
+struct MostrarMensajes: View {
+    var item : Mensaje
+    var color : Color
+    var al1 : Alignment
+    var al2 : HorizontalAlignment
+    var txtColor : Color
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(" > \(item.usuarioE)")
+                .font(.footnote)
+            ZStack(alignment: al1) {
+                // Fondo azul con el texto del timestamp
+                
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(color)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                // Contenido del mensaje
+                
+                VStack(alignment: al2) {
+                    
+                    Text(item.texto)
+                        .bold()
+                        .padding([.leading, .trailing],5)
+                        .foregroundColor(txtColor)
+                
+                    Text(item.timestamp?.dateValue().formatted() ?? Date().formatted())
+                    //.font(.footnote)
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .padding([.leading, .trailing], 5)
+                        .padding(.bottom,5)
+                }//fin de vstack
+            }
+            .padding(.horizontal, 5)
+            
+        }
     }
 }
