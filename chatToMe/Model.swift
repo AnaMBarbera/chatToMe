@@ -17,3 +17,9 @@ struct Mensaje: Codable, Identifiable, Equatable, Hashable {
     var usuarioE: String
     @ServerTimestamp var timestamp: Timestamp?
 }
+
+struct Coleccion: Codable, Identifiable, Hashable {
+    @DocumentID var id:String?
+    var nombre : String
+    var usuarioE : String
+}

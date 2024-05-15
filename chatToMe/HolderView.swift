@@ -16,8 +16,9 @@ struct HolderView: View {
                 SignUpView()
             } else {
                // let almacenInicial = SettingStore()
-                let viewModel = MensajesViewModel()
-                ConversacionView(msgViewModel: viewModel).environmentObject(authModel)
+                //let viewModel = MensajesViewModel()
+                //ConversacionView(msgViewModel: viewModel).environmentObject(authModel)
+                salasView().environmentObject(authModel)
             }
         }
         .onAppear {

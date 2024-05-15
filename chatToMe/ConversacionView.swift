@@ -67,7 +67,7 @@ struct ConversacionView: View {
                         
                         let msg = Mensaje(texto: mensaje,usuarioE: authModel.user?.email ?? "Vacío",timestamp: tiempo)
                         msgViewModel.addMensaje(mensaje: msg)
-                        msgViewModel.fetchMensajes()
+                        //msgViewModel.fetchMensajes()
                         //Actualizamos mensajesOrdenados para que el Scroll baje
                         mensajesOrdenados.append(msg)
                         //No hace falta, porque he agregado un onChange al ppio de la vista
@@ -80,12 +80,17 @@ struct ConversacionView: View {
                         .border(Color.black)
                         
                         .padding(5)
+                Button(action:{
+                    //msgViewModel.obtenerMetadataFirestore()
+                }){
+                    Text("Consulta Colecciones")
+                }
                     Spacer()
                 }
                 
             .onAppear {
                 focusEnMensaje = true //Ponemos a true esta variable, para que el user no tenga que pulsar sobre el mensaje para poder escribir
-                //msgViewModel.fetchMensajes()
+                msgViewModel.fetchMensajes()
                 msgViewModel.startListening()
                 
                 // Utilizamos el método map para obtener un array de String con el campo texto de cada mensaje y ordenados por la marca de tiempo
@@ -121,7 +126,7 @@ func scrollToBottom(scrollView: ScrollViewProxy) {
 
 struct ConversacionView_Previews: PreviewProvider {
     static var previews: some View {
-        ConversacionView(msgViewModel: MensajesViewModel())
+        ConversacionView(msgViewModel: MensajesViewModel(nombreColeccion: "mensajes"))
     }
 }
 
