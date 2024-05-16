@@ -21,35 +21,47 @@ struct salasView: View {
     NavigationView{
     ZStack{
         VStack{
-            
             CabeceraView()
+                .padding(.bottom, 10) 
             
                 .onChange(of: salasVM.coleccionesDB) { nuevasSalas in
                         salasFB = nuevasSalas
                     }
+            //Spacer()
             
-            Text("SALAS DISPONIBLES: ")
-                .padding()
+            Text("SALAS DISPONIBLES")
+                .padding(5)
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .shadow(radius: 3)
             
-                ScrollView {
-                        //Muy importante agregar el id: \.self para que identifique los cambios en el array y se refresque el scroll
-                    
-                    VStack {
-                        ForEach(salasFB, id: \.self){  elemento in
-                            NavigationLink(destination: ConversacionView(msgViewModel: MensajesViewModel(nombreColeccion: elemento.nombre)).environmentObject(authModel)){
-                                    Text("Sala: \(elemento.nombre)")
-                            }
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], alignment: .center, spacing: 10) {
+                    ForEach(salasFB, id: \.self) { elemento in
+                        NavigationLink(destination: ConversacionView(msgViewModel: MensajesViewModel(nombreColeccion: elemento.nombre)).environmentObject(authModel)) {
+                            Text(elemento.nombre)
+                                .padding(5)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 3)
                         }
                     }
                 }
-            //.padding()
-            Button(action:{
-                
-            }){
-                Text("ENTRAR")
+                .frame(height: 140)
+                .background(Image("fondochats").opacity(0.7))
+                //.padding(.vertical, 5)
             }
-            .padding()
+            .cornerRadius(40)
+            .padding(.horizontal)
+           
             Text("CREA TU PROPIA SALA")
+                .padding(5)
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .shadow(radius: 3)
             TextField("Nombre de la sala:",text: $salaName,onCommit: {
                 //let tiempo = Timestamp(date: Date())
                 
@@ -63,7 +75,16 @@ struct salasView: View {
                 salaName = ""
                 //focusEnMensaje = true
             })
-            Spacer()
+            .padding([.horizontal,.vertical])
+            .background(Color.white)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 2)
+                    .shadow(radius: 3)
+            )
+            .padding([.horizontal,.vertical])
+            .padding(.bottom,40)
+            
         }
         
             

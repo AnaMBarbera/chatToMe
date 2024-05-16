@@ -43,9 +43,10 @@ struct CabeceraView: View {
                 .sheet(isPresented: $mostrarModal){
                     SubirArchivoView()
                 }
-      //  .navigationBarHidden(true)
+        .navigationBarHidden(true)
         }
-        //.edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.all)
+        .padding(.top,20)
     }
 }
 
