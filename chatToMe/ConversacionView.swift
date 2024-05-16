@@ -32,15 +32,15 @@ struct ConversacionView: View {
         }else {
                 Group {
                     VStack(alignment: .leading){
+                        //Spacer()
                             CabeceraView()
+                            //.padding(.top,20)
                             //Controlamos los cambios del array que se carga desde la bbdd, para asignarlos al array ordenado y así poder refrescar la vista
                             .onChange(of: msgViewModel.mensajesDB) { nuevosMensajes in
                                     mensajesOrdenados = nuevosMensajes.sorted(by: { ($0.timestamp?.dateValue() ?? Date()) < ($1.timestamp?.dateValue() ?? Date()) })
                                 }
                             //Necesitamos mostrar siempre el último elemento del array, por eso usamos scrollViewReader dentro del ScrollView
-                      
-                        
-                        
+    
                             ScrollViewReader { scrollView in //proxy
                                 ScrollView {
                                         //Muy importante agregar el id: \.self para que identifique los cambios en el array y se refresque el scroll
@@ -74,20 +74,17 @@ struct ConversacionView: View {
                                 focusEnMensaje = true
                             })
                                 .focused($focusEnMensaje)//Así el user no tiene que pulsar sobre el textField para poder escribir
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .border(Color.black)
-                                
-                                .padding(5)
-                        Button(action:{
-                            //msgViewModel.obtenerMetadataFirestore()
-                        }){
-                            Text("Consulta Colecciones")
-                        }
-                            Spacer()
+                                .padding([.horizontal,.vertical])
+                                .background(Color.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.black, lineWidth: 2)
+                                        .shadow(radius: 3)
+                                )
+                                .padding([.horizontal,.vertical])
                         }
                         
                     .onAppear {
-                        
                         focusEnMensaje = true //Ponemos a true esta variable, para que el user no tenga que pulsar sobre el mensaje para poder escribir
                         msgViewModel.fetchMensajes()
                         msgViewModel.startListening()
@@ -96,16 +93,21 @@ struct ConversacionView: View {
                         //Cargamos en la variable, los mensajes ordenados
                         mensajesOrdenados = msgViewModel.mensajesDB.sorted(by: { ($0.timestamp?.dateValue() ?? Date()) < ($1.timestamp?.dateValue() ?? Date()) }).map { $0 }
                         //Tampoco hace falta, al agregar el onChange al ppio de la vista
-                        
-                          
-                                
                             }
                     .onDisappear {
                                msgViewModel.stopListening()
                 }
+                   // .padding(.top,20)
                 }
+               // .padding(.top,20)
             }
+                
         }//Fin ZStack
+        //.padding(.top,20)
+        .navigationBarTitleDisplayMode(.inline) //para ganar espacio en la parte superior de la vista. Compacta la barra de navegación
+        //.navigationBarHidden(true)
+        //.padding(.top)
+        //.edgesIgnoringSafeArea(.top)
         .background(Image("fondochats").edgesIgnoringSafeArea(.all).opacity(0.4))
         
     }

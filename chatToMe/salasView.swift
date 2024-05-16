@@ -103,16 +103,6 @@ struct salasView: View {
                 salasFB = salasVM.coleccionesDB
             }
         
-        //Tampoco hace falta, al agregar el onChange al ppio de la vista
-        
-        // Iniciar temporizador para ocultar la imagen después de 3 segundos
-        /*Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
-            withAnimation {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3){}
-                mostrarImagenInicial = false
-            }
-            
-        }*/
     }
     .onDisappear {
                salasVM.stopListeningSalas()
