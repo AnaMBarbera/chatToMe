@@ -25,14 +25,24 @@ struct SubirArchivoView: View {
                 isShowingDocumentPicker.toggle()
             }
             
-            Button("Subir archivo predeterminado") {
+            
+            Button("Subir archivo seleccionado") {
+                            if let fileURL = fileURL {
+                                uploadFile(fileURL: fileURL)
+                            } else {
+                                print("No se ha seleccionado ningún archivo")
+                            }
+            }
+        
+        
+         /*   Button("Subir archivo predeterminado") {
                 // Llama a la función uploadFile con la URL del archivo predeterminado
                 if let defaultFileURL = Bundle.main.url(forResource: "/Users/jose/Desktop/chatToMe/chatToMe/SubirArchivoView", withExtension: "swift") {
                     uploadFile(fileURL: defaultFileURL)
                 } else {
                     print("No se encontró el archivo predeterminado")
                 }
-            }
+            } */
         }
         .sheet(isPresented: $isShowingDocumentPicker) {
             DocumentPickerViewController(fileURL: $fileURL)
